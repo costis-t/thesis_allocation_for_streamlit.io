@@ -589,7 +589,7 @@ def generate_all_charts_zip():
                         yaxis_title="Student",
                         xaxis_tickangle=-45
                     )
-                    fig.write_html(f"{tmpdir}/advanced_charts_02_student_topic_heatmap.html") * 10))
+                    fig.write_html(f"{tmpdir}/advanced_charts_02_student_topic_heatmap.html")
                     chart_files.append(("advanced_charts_02_student_topic_heatmap.html", f"{tmpdir}/advanced_charts_02_student_topic_heatmap.html"))
                 
                 # 3. Coach × Topic Heatmap
