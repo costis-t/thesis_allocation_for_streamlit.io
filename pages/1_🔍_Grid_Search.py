@@ -26,6 +26,9 @@ except NameError:
     sys.path.insert(0, str(project_root))
 
 from streamlit_dashboard_pages.shared import initialize_session_state
+from allocator.data_repository import DataRepository
+from allocator.preference_model import PreferenceModel
+from allocator.allocation_model_ilp import AllocationModelILP
 
 # Initialize session state
 initialize_session_state()
