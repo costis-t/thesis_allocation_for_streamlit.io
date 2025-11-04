@@ -27,18 +27,6 @@ except NameError:
     sys.path.insert(0, str(project_root))
     sys.path.insert(0, str(project_root / "streamlit_dashboard_pages"))
 
-from streamlit_dashboard_pages.shared import initialize_session_state, add_license_to_sidebar, safe_set_page_config
-from allocator.data_repository import DataRepository
-
-# Initialize session state
-initialize_session_state()
-
-# Set page config (safe if already set by main app)
-safe_set_page_config(
-    page_title="Grid Search - Thesis Allocation Dashboard",
-    page_icon="🔍",
-    layout="wide"
-)
 
 st.header("🔍 Grid Search for Optimal Costs")
 st.write("Explore different cost combinations to find Pareto-optimal solutions balancing satisfaction and fairness.")

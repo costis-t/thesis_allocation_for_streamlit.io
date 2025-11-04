@@ -19,17 +19,6 @@ except NameError:
     sys.path.insert(0, str(project_root))
     sys.path.insert(0, str(project_root / "streamlit_dashboard_pages"))
 
-from streamlit_dashboard_pages.shared import initialize_session_state, safe_set_page_config
-
-# Initialize session state
-initialize_session_state()
-
-# Set page config (safe if already set by main app)
-safe_set_page_config(
-    page_title="Data Explorer - Thesis Allocation Dashboard",
-    page_icon="🔍",
-    layout="wide"
-)
 
 st.header("🔍 Data Explorer")
 st.info("""
