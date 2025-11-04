@@ -1,0 +1,33 @@
+{
+  "_description": "FAST CONFIG - Quick allocation, near-optimal results",
+  "_policy": "Fast solver with 5% tolerance on optimal",
+  
+  "preference": {
+    "allow_unranked": true,
+    "tier2_cost": 1,
+    "tier3_cost": 5,
+    "unranked_cost": 200,
+    "top2_bias": true,
+    "min_acceptable_preference_rank": null,
+    "max_acceptable_preference_rank": null,
+    "excluded_preference_ranks": []
+  },
+  
+  "capacity": {
+    "enable_topic_overflow": true,
+    "enable_coach_overflow": true,
+    "dept_min_mode": "soft",
+    "dept_max_mode": "soft",
+    "P_dept_shortfall": 1000,
+    "P_dept_overflow": 1200,
+    "P_topic": 800,
+    "P_coach": 600
+  },
+  
+  "solver": {
+    "algorithm": "flow",
+    "time_limit_sec": 30,
+    "random_seed": 42,
+    "epsilon_suboptimal": 0.05
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "preference": {
+    "allow_unranked": false,
+    "tier2_cost": 61,
+    "tier3_cost": 100,
+    "unranked_cost": 500,
+    "top2_bias": true,
+    "rank1_cost": 0,
+    "rank2_cost": 12,
+    "rank3_cost": 184,
+    "rank4_cost": 201,
+    "rank5_cost": 202,
+    "min_acceptable_preference_rank": null,
+    "max_acceptable_preference_rank": null,
+    "excluded_preference_ranks": null
+  },
+  "capacity": {
+    "enable_topic_overflow": false,
+    "enable_coach_overflow": false,
+    "dept_min_mode": "soft",
+    "dept_max_mode": "soft",
+    "P_dept_shortfall": 5000,
+    "P_dept_overflow": 5000,
+    "P_topic": 800,
+    "P_coach": 600
+  },
+  "solver": {
+    "algorithm": "flow",
+    "time_limit_sec": 184,
+    "random_seed": null,
+    "epsilon_suboptimal": null
+  }
+}

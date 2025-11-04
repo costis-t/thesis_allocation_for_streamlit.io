@@ -1,0 +1,33 @@
+{
+  "_description": "STRICT CONFIG - No one gets bad options",
+  "_policy": "Everyone gets 1st choice or Tier 1 (very difficult!)",
+  
+  "preference": {
+    "allow_unranked": false,
+    "tier2_cost": 1,
+    "tier3_cost": 5,
+    "unranked_cost": 200,
+    "top2_bias": true,
+    "min_acceptable_preference_rank": 10,
+    "max_acceptable_preference_rank": null,
+    "excluded_preference_ranks": []
+  },
+  
+  "capacity": {
+    "enable_topic_overflow": false,
+    "enable_coach_overflow": false,
+    "dept_min_mode": "hard",
+    "dept_max_mode": "hard",
+    "P_dept_shortfall": 5000,
+    "P_dept_overflow": 5000,
+    "P_topic": 1000,
+    "P_coach": 1000
+  },
+  
+  "solver": {
+    "algorithm": "ilp",
+    "time_limit_sec": 600,
+    "random_seed": null,
+    "epsilon_suboptimal": null
+  }
+}

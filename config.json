@@ -1,0 +1,51 @@
+{
+  "_comment": "THESIS ALLOCATION CONFIGURATION - All options with documentation",
+  
+  "preference": {
+    "_help": "How to calculate preference satisfaction costs",
+    "allow_unranked": true,
+    "_allow_unranked_help": "Allow students to be assigned to unranked topics (fallback)",
+    "tier2_cost": 1,
+    "_tier2_cost_help": "Cost penalty for assigning to Tier 2 instead of Tier 1",
+    "tier3_cost": 5,
+    "_tier3_cost_help": "Cost penalty for assigning to Tier 3 instead of Tier 1",
+    "unranked_cost": 200,
+    "_unranked_cost_help": "Cost penalty for assigning to completely unranked topic",
+    "top2_bias": true,
+    "_top2_bias_help": "If true: 1st choice=0, 2nd choice=1, 3rd+=100+. If false: ranked by position",
+    "min_acceptable_preference_rank": 13,
+    "_min_acceptable_preference_rank_help": "MINIMUM satisfaction - prevent students from getting bad choices. Values: null (no limit), 10 (1st only), 11 (1st-2nd), 12 (1st-3rd), 13 (1st-4th), 14 (1st-5th). Tiers always acceptable.",
+    "max_acceptable_preference_rank": 11,
+    "_max_acceptable_preference_rank_help": "MAXIMUM satisfaction - prevent students from getting good choices. Values: null (no limit), 10 (worst is 1st), 11 (worst is 2nd), 12 (worst is 3rd), 13 (worst is 4th), 14 (worst is 5th). Use to force lower preferences.",
+    "excluded_preference_ranks": [],
+    "_excluded_preference_ranks_help": "EXCLUDE specific ranks - e.g., [10] excludes 1st choice, [10, 11] excludes 1st and 2nd. No one can get these preferences. Example: [10] forces diversity by excluding everyone's 1st choice."
+  },
+  
+  "capacity": {
+    "_help": "Constraints on topic/coach/department capacities",
+    "enable_topic_overflow": true,
+    "_enable_topic_overflow_help": "Allow topics to exceed capacity (with penalty)",
+    "enable_coach_overflow": true,
+    "_enable_coach_overflow_help": "Allow coaches to exceed capacity (with penalty)",
+    "dept_min_mode": "soft",
+    "_dept_min_mode_help": "soft = penalty for not meeting dept minimum, hard = must meet minimum",
+    "P_dept_shortfall": 1000,
+    "_P_dept_shortfall_help": "Penalty per student short of department minimum",
+    "P_topic": 800,
+    "_P_topic_help": "Penalty per student exceeding topic capacity",
+    "P_coach": 600,
+    "_P_coach_help": "Penalty per student exceeding coach capacity"
+  },
+  
+  "solver": {
+    "_help": "Algorithm and solver settings",
+    "algorithm": "ilp",
+    "_algorithm_help": "ilp = Integer Linear Programming, flow = Min-Cost Max-Flow",
+    "time_limit_sec": null,
+    "_time_limit_sec_help": "Time limit for solver in seconds (null = no limit)",
+    "random_seed": null,
+    "_random_seed_help": "Random seed for reproducible results (null = random each time)",
+    "epsilon_suboptimal": null,
+    "_epsilon_suboptimal_help": "Allow near-optimal solutions (e.g., 0.05 = within 5% of optimal)"
+  }
+}

@@ -1,0 +1,89 @@
+Solver status: Optimal
+Objective: 1298
+
+Unassignable students (no admissible topics): 0
+
+Unassigned after solve: 0
+
+--- SOLUTION UNIQUENESS ---
+✓ Solution appears UNIQUE (no ties in costs).
+
+Preference satisfaction:
+  Tier1: 0
+  Tier2: 0
+  Tier3: 0
+
+Ranked choice satisfaction:
+  1st choice: 46
+  2nd choice: 29
+  3rd choice: 4
+  4th choice: 0
+  5th choice: 1
+  Unranked : 0
+
+Topic utilization:
+  topic01: 3 / 3
+  topic02: 3 / 3
+  topic03: 3 / 3
+  topic04: 2 / 4
+  topic05: 1 / 3
+  topic06: 3 / 3
+  topic07: 3 / 3
+  topic08: 3 / 3
+  topic09: 3 / 3
+  topic10: 2 / 3
+  topic11: 4 / 6
+  topic12: 2 / 4
+  topic13: 5 / 7
+  topic14: 1 / 2
+  topic15: 3 / 3
+  topic16: 3 / 3
+  topic17: 5 / 5
+  topic18: 1 / 2
+  topic19: 5 / 5
+  topic20: 3 / 3
+  topic21: 3 / 3
+  topic22: 2 / 2
+  topic23: 2 / 8
+  topic24: 1 / 1
+  topic25: 3 / 4
+  topic26: 2 / 3
+  topic27: 3 / 4
+  topic28: 3 / 3
+  topic29: 3 / 3
+
+Coach utilization:
+  coach01: 3 / 3
+  coach02: 3 / 3
+  coach03: 3 / 6
+  coach04: 2 / 8
+  coach05: 1 / 2
+  coach06: 3 / 3
+  coach07: 3 / 3
+  coach08: 3 / 3
+  coach09: 3 / 3
+  coach10: 2 / 4
+  coach11: 4 / 4
+  coach12: 7 / 10
+  coach13: 7 / 7
+  coach14: 5 / 8
+  coach15: 1 / 1
+  coach16: 5 / 8
+  coach17: 3 / 3
+  coach18: 3 / 3
+  coach19: 2 / 2
+  coach20: 2 / 2
+  coach21: 1 / 3
+  coach22: 3 / 3
+  coach23: 2 / 2
+  coach24: 3 / 4
+  coach25: 3 / 3
+  coach26: 3 / 13
+
+Department totals:
+  department01: 11 (desired_min=3)
+  department02: 19 (desired_min=2)
+  department03: 14 (desired_min=4)
+  department04: 11 (desired_min=8)
+  department05: 19 (desired_min=5)
+  department06: 6 (desired_min=2)
