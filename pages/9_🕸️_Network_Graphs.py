@@ -83,25 +83,28 @@ else:
     
     # Generate network visualizations
     try:
-        # Check if the viz script exists
-        viz_script = project_root / "viz_network_flow.py"
-        
-        if viz_script.exists():
-            # Run the visualization script
-            with st.spinner("🔄 Generating network visualization..."):
-                result = subprocess.run(
-                    [
-                        "python3", str(viz_script),
-                        "--allocation", temp_csv,
-                        "--output", str(project_root / "visualisations/network_flow.html")
-                    ],
-                    capture_output=True,
-                    text=True,
-                    cwd=str(project_root)
+        # Try to import and call the visualization function directly
+        with st.spinner("🔄 Generating network visualization..."):
+            try:
+                # Try to generate visualizations inline
+                from viz_network_flow import create_network_visualization
+                
+                # Create visualization output directory
+                viz_output_dir = project_root / "visualisations"
+                viz_output_dir.mkdir(exist_ok=True)
+                
+                # Generate visualizations
+                create_network_visualization(
+                    temp_csv, 
+                    str(viz_output_dir / "network_flow_main.html")
                 )
-            
-            
-            if result.returncode == 0:
+                viz_generated = True
+            except Exception as e:
+                st.warning(f"⚠️ Could not generate network flow visualizations: {e}")
+                st.info("📊 Showing basic allocation statistics instead.")
+                viz_generated = False
+        
+        if viz_generated:
                 # Define the three HTML files
                 html_files = {
                     "Main Network (Detailed + Bundled View)": "visualisations/network_flow_main.html",
@@ -233,13 +236,34 @@ else:
                     # Students who got top 3 choices
                     top3 = sum(1 for row in rows if row.preference_rank <= 12)
                     st.metric("Got Top 3", f"{top3} ({top3/len(rows)*100:.1f}%)")
-            else:
-                st.error("HTML files not found after generation")
         else:
-            st.error(f"Failed to generate visualization: {result.stderr}")
-            st.code(result.stdout)
-        if not viz_script.exists():
-            st.error(f"Visualization script not found at: {viz_script}")
+            # If visualization didn't generate, show basic stats
+            st.markdown("### 📊 Basic Allocation Statistics")
+            
+            with st.expander("📈 Preference Satisfaction Breakdown", expanded=True):
+                pref_counts = {}
+                for row in rows:
+                    rank = row.preference_rank
+                    pref_counts[rank] = pref_counts.get(rank, 0) + 1
+                
+                # Create a DataFrame for display
+                pref_df = pd.DataFrame([
+                    {'Rank': rank, 'Count': count, 'Percentage': f'{(count/len(rows)*100):.1f}%'}
+                    for rank, count in sorted(pref_counts.items())
+                ])
+                st.dataframe(pref_df, use_container_width=True)
+            
+            with st.expander("📊 Summary Statistics", expanded=True):
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    avg_cost = sum(row.effective_cost for row in rows) / len(rows)
+                    st.metric("Average Cost", f"{avg_cost:.2f}")
+                with col2:
+                    first_choice = sum(1 for row in rows if row.preference_rank == 10)
+                    st.metric("Got 1st Choice", f"{first_choice} ({first_choice/len(rows)*100:.1f}%)")
+                with col3:
+                    top3 = sum(1 for row in rows if row.preference_rank <= 12)
+                    st.metric("Got Top 3", f"{top3} ({top3/len(rows)*100:.1f}%)")
             
     except Exception as e:
         st.error(f"Error generating visualization: {str(e)}")

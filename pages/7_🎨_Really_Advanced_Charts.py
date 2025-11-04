@@ -15,7 +15,11 @@ except NameError:
     project_root = Path.cwd()
     sys.path.insert(0, str(project_root))
 
-from streamlit_dashboard_pages.shared import initialize_session_state
+from streamlit_dashboard_pages.shared import (
+    initialize_session_state,
+    calculate_fairness_score,
+    calculate_satisfaction_metrics
+)
 
 # Initialize session state
 initialize_session_state()
