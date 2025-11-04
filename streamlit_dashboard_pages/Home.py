@@ -15,13 +15,13 @@ except NameError:
     project_root = Path.cwd()
     sys.path.insert(0, str(project_root))
 
-from streamlit_dashboard_pages.shared import initialize_session_state
+from streamlit_dashboard_pages.shared import initialize_session_state, safe_set_page_config
 
 # Initialize session state
 initialize_session_state()
 
 # Set page config
-st.set_page_config(
+safe_set_page_config(
     page_title="Thesis Allocation Dashboard",
     page_icon="🎓",
     layout="wide",

@@ -18,13 +18,13 @@ except NameError:
     sys.path.insert(0, str(project_root))
     sys.path.insert(0, str(project_root / "streamlit_dashboard_pages"))
 
-from streamlit_dashboard_pages.shared import initialize_session_state, calculate_fairness_score
+from streamlit_dashboard_pages.shared import initialize_session_state, calculate_fairness_score, safe_set_page_config
 
 # Initialize session state
 initialize_session_state()
 
-# Set page config
-st.set_page_config(
+# Set page config (safe if already set by main app)
+safe_set_page_config(
     page_title="Really Advanced Charts - Thesis Allocation Dashboard",
     page_icon="🚀",
     layout="wide"

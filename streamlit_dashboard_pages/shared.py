@@ -1307,3 +1307,11 @@ def generate_all_charts_zip():
         st.error(traceback.format_exc())
         return None
 
+
+def safe_set_page_config(*args, **kwargs):
+    """Safely call st.set_page_config once; ignore if already set or called late."""
+    try:
+        import streamlit as st
+        st.set_page_config(*args, **kwargs)
+    except Exception:
+        pass

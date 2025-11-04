@@ -27,14 +27,14 @@ except NameError:
     sys.path.insert(0, str(project_root))
     sys.path.insert(0, str(project_root / "streamlit_dashboard_pages"))
 
-from streamlit_dashboard_pages.shared import initialize_session_state, add_license_to_sidebar
+from streamlit_dashboard_pages.shared import initialize_session_state, add_license_to_sidebar, safe_set_page_config
 from allocator.data_repository import DataRepository
 
 # Initialize session state
 initialize_session_state()
 
-# Set page config
-st.set_page_config(
+# Set page config (safe if already set by main app)
+safe_set_page_config(
     page_title="Grid Search - Thesis Allocation Dashboard",
     page_icon="🔍",
     layout="wide"
