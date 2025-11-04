@@ -93,9 +93,22 @@ else:
                 viz_output_dir = project_root / "visualisations"
                 viz_output_dir.mkdir(exist_ok=True)
                 
+                # Convert rows to list of dicts for the visualization function
+                rows_data = [
+                    {
+                        'student': row.student,
+                        'assigned_topic': row.assigned_topic,
+                        'assigned_coach': row.assigned_coach,
+                        'department_id': row.department_id,
+                        'preference_rank': row.preference_rank,
+                        'effective_cost': row.effective_cost
+                    }
+                    for row in rows
+                ]
+                
                 # Generate visualizations
                 create_network_visualization(
-                    temp_csv, 
+                    rows_data, 
                     str(viz_output_dir / "network_flow_main.html")
                 )
                 viz_generated = True
