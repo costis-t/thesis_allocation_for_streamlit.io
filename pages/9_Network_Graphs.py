@@ -1,5 +1,11 @@
 import runpy
+from pathlib import Path
 
-runpy.run_path("streamlit_dashboard_pages/pages/9_Network_Graphs.py", run_name="__main__")
+# Get absolute path to the actual page script
+current_file = Path(__file__).resolve()
+project_root = current_file.parent.parent
+actual_page = project_root / "streamlit_dashboard_pages" / "pages" / "9_Network_Graphs.py"
+
+runpy.run_path(str(actual_page), run_name="__main__")
 
 

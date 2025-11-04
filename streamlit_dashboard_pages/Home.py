@@ -125,24 +125,10 @@ with col2:
 
 # Add license in sidebar
 st.sidebar.markdown("---")
-# st.sidebar.markdown("""
-# <div style='text-align: center; font-size: 11px; color: #666; padding: 10px;'>
-#     <a href='https://www.gnu.org/licenses/gpl-3.0.en.html' target='_blank' style='color: #666; text-decoration: none;'>
-#         📄 Licensed under GNU GPLv3
-#     </a>
-# </div>
-# """, unsafe_allow_html=True)
-# Explicit sidebar navigation (works even if native multipage nav is hidden)
-st.sidebar.subheader("Navigation")
-try:
-    st.sidebar.page_link("pages/0_Overview.py", label="🏠 Home")
-    st.sidebar.page_link("pages/5_Data_Explorer.py", label="🔍 Data Explorer")
-    st.sidebar.page_link("pages/2_Configuration.py", label="⚙️ Configuration")
-    st.sidebar.page_link("pages/3_Run_Allocation.py", label="🚀 Run Allocation")
-    st.sidebar.page_link("pages/4_Results_Analysis.py", label="📊 Results Analysis")
-    st.sidebar.page_link("pages/6_Advanced_Charts.py", label="📈 Advanced Charts")
-    st.sidebar.page_link("pages/7_Really_Advanced_Charts.py", label="🚀 Really Advanced Charts")
-    st.sidebar.page_link("pages/8_Compare_Allocations.py", label="⚖️ Compare Allocations")
-    st.sidebar.page_link("pages/9_Network_Graphs.py", label="🔗 Network Graphs")
-except Exception:
-    pass
+st.sidebar.markdown("""
+<div style='text-align: center; font-size: 11px; color: #666; padding: 10px;'>
+    <a href='https://www.gnu.org/licenses/gpl-3.0.en.html' target='_blank' style='color: #666; text-decoration: none;'>
+        📄 Licensed under GNU GPLv3
+    </a>
+</div>
+""", unsafe_allow_html=True)
