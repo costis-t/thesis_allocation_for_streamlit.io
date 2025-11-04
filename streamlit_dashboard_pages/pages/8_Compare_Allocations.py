@@ -19,7 +19,7 @@ except NameError:
     sys.path.insert(0, str(project_root))
     sys.path.insert(0, str(project_root / "streamlit_dashboard_pages"))
 
-from shared import initialize_session_state, calculate_satisfaction_metrics, calculate_fairness_score
+from streamlit_dashboard_pages.shared import initialize_session_state, calculate_satisfaction_metrics, calculate_fairness_score
 
 # Initialize session state
 initialize_session_state()

@@ -27,7 +27,7 @@ except NameError:
     sys.path.insert(0, str(project_root))
     sys.path.insert(0, str(project_root / "streamlit_dashboard_pages"))
 
-from shared import initialize_session_state, add_license_to_sidebar
+from streamlit_dashboard_pages.shared import initialize_session_state, add_license_to_sidebar
 from allocator.data_repository import DataRepository
 
 # Initialize session state

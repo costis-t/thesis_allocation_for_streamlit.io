@@ -21,7 +21,7 @@ except NameError:
     sys.path.insert(0, str(project_root))
     sys.path.insert(0, str(project_root / "streamlit_dashboard_pages"))
 
-from shared import initialize_session_state, download_combined_results, generate_all_charts_zip
+from streamlit_dashboard_pages.shared import initialize_session_state, download_combined_results, generate_all_charts_zip
 
 # Initialize session state
 initialize_session_state()
