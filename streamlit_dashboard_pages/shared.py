@@ -589,8 +589,9 @@ def generate_all_charts_zip():
                         yaxis_title="Student",
                         xaxis_tickangle=-45
                     )
-                    fig.write_image(f"{tmpdir}/advanced_charts_02_student_topic_heatmap.png", width=1200, height=max(600, len(allocation_df) * 10))
-                    chart_files.append(("advanced_charts_02_student_topic_heatmap.png", f"{tmpdir}/advanced_charts_02_student_topic_heatmap.png"))
+                    # Use HTML instead of PNG to avoid Kaleido/Chrome requirement
+                    fig.write_html(f"{tmpdir}/advanced_charts_02_student_topic_heatmap.html")
+                    chart_files.append(("advanced_charts_02_student_topic_heatmap.html", f"{tmpdir}/advanced_charts_02_student_topic_heatmap.html"))
                 
                 # 3. Coach × Topic Heatmap
                 if 'assigned_coach' in allocation_df.columns and 'assigned_topic' in allocation_df.columns and 'effective_cost' in allocation_df.columns:
@@ -629,8 +630,8 @@ def generate_all_charts_zip():
                         yaxis_title="Coach",
                         xaxis_tickangle=-45
                     )
-                    fig.write_image(f"{tmpdir}/advanced_charts_03_coach_topic_heatmap.png", width=1200, height=500)
-                    chart_files.append(("advanced_charts_03_coach_topic_heatmap.png", f"{tmpdir}/advanced_charts_03_coach_topic_heatmap.png"))
+                    fig.write_html(f"{tmpdir}/advanced_charts_03_coach_topic_heatmap.html")
+                    chart_files.append(("advanced_charts_03_coach_topic_heatmap.html", f"{tmpdir}/advanced_charts_03_coach_topic_heatmap.html"))
                 
                 # 4. Department × Topic Heatmap
                 if 'department_id' in allocation_df.columns and 'assigned_topic' in allocation_df.columns and 'effective_cost' in allocation_df.columns:
@@ -669,8 +670,8 @@ def generate_all_charts_zip():
                         yaxis_title="Department",
                         xaxis_tickangle=-45
                     )
-                    fig.write_image(f"{tmpdir}/advanced_charts_04_department_topic_heatmap.png", width=1200, height=500)
-                    chart_files.append(("advanced_charts_04_department_topic_heatmap.png", f"{tmpdir}/advanced_charts_04_department_topic_heatmap.png"))
+                    fig.write_html(f"{tmpdir}/advanced_charts_04_department_topic_heatmap.html")
+                    chart_files.append(("advanced_charts_04_department_topic_heatmap.html", f"{tmpdir}/advanced_charts_04_department_topic_heatmap.html"))
                 
                 # 5-7. Utilization charts (Topic, Coach, Department)
                 if repo:
@@ -701,8 +702,8 @@ def generate_all_charts_zip():
                                 xaxis_tickangle=-45,
                                 hovermode='x unified'
                             )
-                            fig.write_image(f"{tmpdir}/advanced_charts_05_topic_utilization.png", width=1200, height=500)
-                            chart_files.append(("advanced_charts_05_topic_utilization.png", f"{tmpdir}/advanced_charts_05_topic_utilization.png"))
+                            fig.write_html(f"{tmpdir}/advanced_charts_05_topic_utilization.html")
+                            chart_files.append(("advanced_charts_05_topic_utilization.html", f"{tmpdir}/advanced_charts_05_topic_utilization.html"))
                     
                     # Coach Utilization
                     if 'assigned_coach' in allocation_df.columns:
@@ -731,8 +732,8 @@ def generate_all_charts_zip():
                                 xaxis_tickangle=-45,
                                 hovermode='x unified'
                             )
-                            fig.write_image(f"{tmpdir}/advanced_charts_06_coach_utilization.png", width=1200, height=500)
-                            chart_files.append(("advanced_charts_06_coach_utilization.png", f"{tmpdir}/advanced_charts_06_coach_utilization.png"))
+                            fig.write_html(f"{tmpdir}/advanced_charts_06_coach_utilization.html")
+                            chart_files.append(("advanced_charts_06_coach_utilization.html", f"{tmpdir}/advanced_charts_06_coach_utilization.html"))
                     
                     # Department Distribution (with real capacity)
                     if 'department_id' in allocation_df.columns:
@@ -768,8 +769,8 @@ def generate_all_charts_zip():
                                 height=500,
                                 xaxis_tickangle=-45
                             )
-                            fig.write_image(f"{tmpdir}/advanced_charts_07_department_distribution.png", width=1200, height=500)
-                            chart_files.append(("advanced_charts_07_department_distribution.png", f"{tmpdir}/advanced_charts_07_department_distribution.png"))
+                            fig.write_html(f"{tmpdir}/advanced_charts_07_department_distribution.html")
+                            chart_files.append(("advanced_charts_07_department_distribution.html", f"{tmpdir}/advanced_charts_07_department_distribution.html"))
                             
                             # Also generate a pie chart for department distribution
                             fig_pie = px.pie(
@@ -777,8 +778,8 @@ def generate_all_charts_zip():
                                 names=dept_names,
                                 title="Student Distribution by Department"
                             )
-                            fig_pie.write_image(f"{tmpdir}/advanced_charts_08_department_pie.png", width=800, height=600)
-                            chart_files.append(("advanced_charts_08_department_pie.png", f"{tmpdir}/advanced_charts_08_department_pie.png"))
+                            fig_pie.write_html(f"{tmpdir}/)
+                            chart_files.append(("advanced_charts_08_department_pie.html", f"{tmpdir}/advanced_charts_08_department_pie.html"))
                             
                             # Load balance charts
                             metrics = calculate_fairness_score(allocation_df)
@@ -804,8 +805,8 @@ def generate_all_charts_zip():
                                 height=500,
                                 xaxis_tickangle=-45
                             )
-                            fig_topic_balance.write_image(f"{tmpdir}/advanced_charts_09_topic_load_balance.png", width=1200, height=500)
-                            chart_files.append(("advanced_charts_09_topic_load_balance.png", f"{tmpdir}/advanced_charts_09_topic_load_balance.png"))
+                            fig_topic_balance.write_html(f"{tmpdir}/)
+                            chart_files.append(("advanced_charts_09_topic_load_balance.html", f"{tmpdir}/advanced_charts_09_topic_load_balance.html"))
                             
                             # Coach Load Balance
                             coach_counts = allocation_df['assigned_coach'].value_counts()
@@ -828,8 +829,8 @@ def generate_all_charts_zip():
                                 height=500,
                                 xaxis_tickangle=-45
                             )
-                            fig_coach_balance.write_image(f"{tmpdir}/advanced_charts_10_coach_load_balance.png", width=1200, height=500)
-                            chart_files.append(("advanced_charts_10_coach_load_balance.png", f"{tmpdir}/advanced_charts_10_coach_load_balance.png"))
+                            fig_coach_balance.write_html(f"{tmpdir}/)
+                            chart_files.append(("advanced_charts_10_coach_load_balance.html", f"{tmpdir}/advanced_charts_10_coach_load_balance.html"))
                             
                             # Department Load Balance
                             all_depts = sorted(repo.departments.keys())
@@ -851,8 +852,8 @@ def generate_all_charts_zip():
                                 height=500,
                                 xaxis_tickangle=-45
                             )
-                            fig_dept_balance.write_image(f"{tmpdir}/advanced_charts_11_department_load_balance.png", width=1200, height=500)
-                            chart_files.append(("advanced_charts_11_department_load_balance.png", f"{tmpdir}/advanced_charts_11_department_load_balance.png"))
+                            fig_dept_balance.write_html(f"{tmpdir}/)
+                            chart_files.append(("advanced_charts_11_department_load_balance.html", f"{tmpdir}/advanced_charts_11_department_load_balance.html"))
                             
                             # Topic Normalized Load Balance (% of capacity)
                             topic_data = []
@@ -870,8 +871,8 @@ def generate_all_charts_zip():
                             fig_topic_norm.add_hline(y=100, line_dash="dash", line_color="red", annotation_text="100% Full")
                             fig_topic_norm.add_hline(y=80, line_dash="dash", line_color="orange", annotation_text="80% Utilization")
                             fig_topic_norm.update_layout(height=500, xaxis_tickangle=-45)
-                            fig_topic_norm.write_image(f"{tmpdir}/advanced_charts_12_topic_normalized_load_balance.png", width=1200, height=600)
-                            chart_files.append(("advanced_charts_12_topic_normalized_load_balance.png", f"{tmpdir}/advanced_charts_12_topic_normalized_load_balance.png"))
+                            fig_topic_norm.write_html(f"{tmpdir}/)
+                            chart_files.append(("advanced_charts_12_topic_normalized_load_balance.html", f"{tmpdir}/advanced_charts_12_topic_normalized_load_balance.html"))
                             
                             # Coach Normalized Load Balance (% of capacity)
                             coach_data = []
@@ -889,8 +890,8 @@ def generate_all_charts_zip():
                             fig_coach_norm.add_hline(y=100, line_dash="dash", line_color="red", annotation_text="100% Full")
                             fig_coach_norm.add_hline(y=80, line_dash="dash", line_color="orange", annotation_text="80% Utilization")
                             fig_coach_norm.update_layout(height=500, xaxis_tickangle=-45)
-                            fig_coach_norm.write_image(f"{tmpdir}/advanced_charts_13_coach_normalized_load_balance.png", width=1200, height=600)
-                            chart_files.append(("advanced_charts_13_coach_normalized_load_balance.png", f"{tmpdir}/advanced_charts_13_coach_normalized_load_balance.png"))
+                            fig_coach_norm.write_html(f"{tmpdir}/)
+                            chart_files.append(("advanced_charts_13_coach_normalized_load_balance.html", f"{tmpdir}/advanced_charts_13_coach_normalized_load_balance.html"))
                             
                             # Department Normalized Load Balance (% of capacity) - FIXED
                             dept_data = []
@@ -916,8 +917,8 @@ def generate_all_charts_zip():
                             fig_dept_norm.add_hline(y=100, line_dash="dash", line_color="red", annotation_text="100% Full")
                             fig_dept_norm.add_hline(y=80, line_dash="dash", line_color="orange", annotation_text="80% Utilization")
                             fig_dept_norm.update_layout(height=500, xaxis_tickangle=-45)
-                            fig_dept_norm.write_image(f"{tmpdir}/advanced_charts_14_department_normalized_load_balance.png", width=1200, height=600)
-                            chart_files.append(("advanced_charts_14_department_normalized_load_balance.png", f"{tmpdir}/advanced_charts_14_department_normalized_load_balance.png"))
+                            fig_dept_norm.write_html(f"{tmpdir}/)
+                            chart_files.append(("advanced_charts_14_department_normalized_load_balance.html", f"{tmpdir}/advanced_charts_14_department_normalized_load_balance.html"))
                             
                             # Overall Fairness Gauge Chart
                             cost_fairness = (1 - metrics.get('gini_cost', 0)) * 100
@@ -942,8 +943,8 @@ def generate_all_charts_zip():
                                        'threshold': {'line': {'color': "red", 'width': 4},
                                                      'thickness': 0.75, 'value': 90}}))
                             fig_fairness_gauge.update_layout(height=400)
-                            fig_fairness_gauge.write_image(f"{tmpdir}/advanced_charts_15_overall_fairness_gauge.png", width=800, height=500)
-                            chart_files.append(("advanced_charts_15_overall_fairness_gauge.png", f"{tmpdir}/advanced_charts_15_overall_fairness_gauge.png"))
+                            fig_fairness_gauge.write_html(f"{tmpdir}/)
+                            chart_files.append(("advanced_charts_15_overall_fairness_gauge.html", f"{tmpdir}/advanced_charts_15_overall_fairness_gauge.html"))
                             
                             # Student Satisfaction Distribution
                             if 'preference_rank' in allocation_df.columns:
@@ -957,8 +958,8 @@ def generate_all_charts_zip():
                                                           labels={'x': 'Satisfaction Level', 'y': 'Number of Students'},
                                                           color=values, color_continuous_scale='RdYlGn')
                                 fig_satisfaction.update_layout(height=500, xaxis_tickangle=-45)
-                                fig_satisfaction.write_image(f"{tmpdir}/advanced_charts_16_student_satisfaction_distribution.png", width=1000, height=600)
-                                chart_files.append(("advanced_charts_16_student_satisfaction_distribution.png", f"{tmpdir}/advanced_charts_16_student_satisfaction_distribution.png"))
+                                fig_satisfaction.write_html(f"{tmpdir}/)
+                                chart_files.append(("advanced_charts_16_student_satisfaction_distribution.html", f"{tmpdir}/advanced_charts_16_student_satisfaction_distribution.html"))
             
             except Exception as e:
                 st.warning(f"Could not generate some Advanced Charts: {e}")
@@ -975,48 +976,48 @@ def generate_all_charts_zip():
                 # Preference & Cost Analysis
                 fig_funnel = create_preference_funnel(allocation_df)
                 if fig_funnel:
-                    fig_funnel.write_image(f"{tmpdir}/really_advanced_01_preference_funnel.png", width=800, height=500)
-                    chart_files.append(("really_advanced_01_preference_funnel.png", f"{tmpdir}/really_advanced_01_preference_funnel.png"))
+                    fig_funnel.write_html(f"{tmpdir}/)
+                    chart_files.append(("really_advanced_01_preference_funnel.html", f"{tmpdir}/really_advanced_01_preference_funnel.html"))
                 
                 fig_pie = create_cost_breakdown_pie(allocation_df)
                 if fig_pie:
-                    fig_pie.write_image(f"{tmpdir}/really_advanced_02_cost_breakdown_pie.png", width=800, height=500)
-                    chart_files.append(("really_advanced_02_cost_breakdown_pie.png", f"{tmpdir}/really_advanced_02_cost_breakdown_pie.png"))
+                    fig_pie.write_html(f"{tmpdir}/)
+                    chart_files.append(("really_advanced_02_cost_breakdown_pie.html", f"{tmpdir}/really_advanced_02_cost_breakdown_pie.html"))
                 
                 fig_violin = create_cost_violin_plot(allocation_df)
                 if fig_violin:
-                    fig_violin.write_image(f"{tmpdir}/really_advanced_03_cost_violin_plot.png", width=800, height=500)
-                    chart_files.append(("really_advanced_03_cost_violin_plot.png", f"{tmpdir}/really_advanced_03_cost_violin_plot.png"))
+                    fig_violin.write_html(f"{tmpdir}/)
+                    chart_files.append(("really_advanced_03_cost_violin_plot.html", f"{tmpdir}/really_advanced_03_cost_violin_plot.html"))
                 
                 # Fairness & Capacity - Fairness Radar needs metrics
                 if hasattr(st.session_state, 'last_repos') and st.session_state.last_repos:
                     metrics = calculate_fairness_score(allocation_df)
                     fig_radar = create_fairness_radar(metrics)
                     if fig_radar:
-                        fig_radar.write_image(f"{tmpdir}/really_advanced_04_fairness_radar.png", width=800, height=500)
-                        chart_files.append(("really_advanced_04_fairness_radar.png", f"{tmpdir}/really_advanced_04_fairness_radar.png"))
+                        fig_radar.write_html(f"{tmpdir}/)
+                        chart_files.append(("really_advanced_04_fairness_radar.html", f"{tmpdir}/really_advanced_04_fairness_radar.html"))
                 
                 if repo:
                     fig_demand = create_topic_demand_vs_capacity(allocation_df, repo)
                     if fig_demand:
-                        fig_demand.write_image(f"{tmpdir}/really_advanced_05_topic_demand_vs_capacity.png", width=1200, height=600)
-                        chart_files.append(("really_advanced_05_topic_demand_vs_capacity.png", f"{tmpdir}/really_advanced_05_topic_demand_vs_capacity.png"))
+                        fig_demand.write_html(f"{tmpdir}/)
+                        chart_files.append(("really_advanced_05_topic_demand_vs_capacity.html", f"{tmpdir}/really_advanced_05_topic_demand_vs_capacity.html"))
                     
                     # Deep Dive
                     fig_scatter = create_student_satisfaction_scatter(allocation_df, repo)
                     if fig_scatter:
-                        fig_scatter.write_image(f"{tmpdir}/really_advanced_06_student_satisfaction_scatter.png", width=1000, height=700)
-                        chart_files.append(("really_advanced_06_student_satisfaction_scatter.png", f"{tmpdir}/really_advanced_06_student_satisfaction_scatter.png"))
+                        fig_scatter.write_html(f"{tmpdir}/)
+                        chart_files.append(("really_advanced_06_student_satisfaction_scatter.html", f"{tmpdir}/really_advanced_06_student_satisfaction_scatter.html"))
                     
                     fig_coach = create_coach_specialization_heatmap(allocation_df, repo)
                     if fig_coach:
-                        fig_coach.write_image(f"{tmpdir}/really_advanced_07_coach_specialization_heatmap.png", width=1200, height=600)
-                        chart_files.append(("really_advanced_07_coach_specialization_heatmap.png", f"{tmpdir}/really_advanced_07_coach_specialization_heatmap.png"))
+                        fig_coach.write_html(f"{tmpdir}/)
+                        chart_files.append(("really_advanced_07_coach_specialization_heatmap.html", f"{tmpdir}/really_advanced_07_coach_specialization_heatmap.html"))
                     
                     fig_dept = create_department_diversity_analysis(allocation_df)
                     if fig_dept:
-                        fig_dept.write_image(f"{tmpdir}/really_advanced_08_department_diversity.png", width=1000, height=600)
-                        chart_files.append(("really_advanced_08_department_diversity.png", f"{tmpdir}/really_advanced_08_department_diversity.png"))
+                        fig_dept.write_html(f"{tmpdir}/)
+                        chart_files.append(("really_advanced_08_department_diversity.html", f"{tmpdir}/really_advanced_08_department_diversity.html"))
             
             except Exception as e:
                 st.warning(f"Could not generate Really Advanced Charts: {e}")
@@ -1091,8 +1092,8 @@ def generate_all_charts_zip():
                         xaxis_tickangle=-45,
                         legend=dict(orientation="v", yanchor="top", y=1, xanchor="right", x=1.02)
                     )
-                    fig_hot.write_image(f"{tmpdir}/results_analysis_04_hot_topics.png", width=1200, height=700)
-                    chart_files.append(("results_analysis_04_hot_topics.png", f"{tmpdir}/results_analysis_04_hot_topics.png"))
+                    fig_hot.write_html(f"{tmpdir}/)
+                    chart_files.append(("results_analysis_04_hot_topics.html", f"{tmpdir}/results_analysis_04_hot_topics.html"))
                 
                 if summary_text:
                     # 1. Preference Satisfaction Chart
@@ -1125,8 +1126,8 @@ def generate_all_charts_zip():
                                 color_continuous_scale="Viridis"
                             )
                             fig_pref.update_layout(height=400, showlegend=False)
-                            fig_pref.write_image(f"{tmpdir}/results_analysis_01_preference_satisfaction.png", width=800, height=500)
-                            chart_files.append(("results_analysis_01_preference_satisfaction.png", f"{tmpdir}/results_analysis_01_preference_satisfaction.png"))
+                            fig_pref.write_html(f"{tmpdir}/)
+                            chart_files.append(("results_analysis_01_preference_satisfaction.html", f"{tmpdir}/results_analysis_01_preference_satisfaction.html"))
                     
                     # 2. Department Distribution Pie Chart
                     if "Department totals:" in summary_text:
@@ -1156,8 +1157,8 @@ def generate_all_charts_zip():
                                 color_discrete_sequence=px.colors.qualitative.Set3
                             )
                             fig_dept_pie.update_layout(height=500)
-                            fig_dept_pie.write_image(f"{tmpdir}/results_analysis_02_department_distribution.png", width=800, height=600)
-                            chart_files.append(("results_analysis_02_department_distribution.png", f"{tmpdir}/results_analysis_02_department_distribution.png"))
+                            fig_dept_pie.write_html(f"{tmpdir}/)
+                            chart_files.append(("results_analysis_02_department_distribution.html", f"{tmpdir}/results_analysis_02_department_distribution.html"))
                     
                     # 3. Topic Capacity Utilization Chart
                     if "Topic utilization:" in summary_text and repo:
@@ -1212,8 +1213,8 @@ def generate_all_charts_zip():
                                 color_discrete_map={"Used": "#0066cc", "Total": "#cccccc"}
                             )
                             fig_util.update_layout(height=500, xaxis_tickangle=-45)
-                            fig_util.write_image(f"{tmpdir}/results_analysis_03_topic_capacity_utilization.png", width=1200, height=600)
-                            chart_files.append(("results_analysis_03_topic_capacity_utilization.png", f"{tmpdir}/results_analysis_03_topic_capacity_utilization.png"))
+                            fig_util.write_html(f"{tmpdir}/)
+                            chart_files.append(("results_analysis_03_topic_capacity_utilization.html", f"{tmpdir}/results_analysis_03_topic_capacity_utilization.html"))
             
             except Exception as e:
                 st.warning(f"Could not generate some Results Analysis charts: {e}")
