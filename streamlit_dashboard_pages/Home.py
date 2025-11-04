@@ -46,6 +46,15 @@ st.markdown("""
     .success-color { color: #00cc00; }
     .warning-color { color: #ff9900; }
     .error-color { color: #cc0000; }
+
+    /* Ensure Streamlit sidebar navigation items are visible */
+    [data-testid="stSidebar"] { color: #222; }
+    [data-testid="stSidebarNav"] a { color: #222 !important; }
+    [data-testid="stSidebarNav"] ul { color: #222 !important; }
+    /* If using dark mode backgrounds elsewhere, uncomment the following to force light text
+    [data-testid="stSidebarNav"] a { color: #e0e0e0 !important; }
+    [data-testid="stSidebarNav"] ul { color: #e0e0e0 !important; }
+    */
 </style>
 """, unsafe_allow_html=True)
 
