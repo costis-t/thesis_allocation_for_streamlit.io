@@ -860,7 +860,7 @@ def generate_all_charts_zip():
                                 topic = repo.topics[topic_id]
                                 assigned = topic_counts.get(topic_id, 0)
                                 capacity = topic.topic_cap
-                                normalized = (assigned / capacity * 100) if capacity > 0 else 0
+                                normalized = (assigned / capacity * 100) if (capacity is not None and capacity > 0) else 0
                                 topic_data.append({'Topic': topic_id, 'Assigned': assigned, 'Capacity': capacity, 'Usage %': normalized})
                             
                             topic_norm_df = pd.DataFrame(topic_data)
@@ -879,7 +879,7 @@ def generate_all_charts_zip():
                                 coach = repo.coaches[coach_id]
                                 assigned = coach_counts.get(coach_id, 0)
                                 capacity = coach.coach_cap
-                                normalized = (assigned / capacity * 100) if capacity > 0 else 0
+                                normalized = (assigned / capacity * 100) if (capacity is not None and capacity > 0) else 0
                                 coach_data.append({'Coach': coach_id, 'Assigned': assigned, 'Capacity': capacity, 'Usage %': normalized})
                             
                             coach_norm_df = pd.DataFrame(coach_data)
@@ -906,7 +906,7 @@ def generate_all_charts_zip():
                                     # Calculate from other departments
                                     avg_assigned = sum(dept_counts.values()) / len(dept_counts) if dept_counts else 0
                                     capacity = max(avg_assigned * 1.2, assigned + 1) if avg_assigned > 0 else assigned + 1
-                                normalized = (assigned / capacity * 100) if capacity > 0 else 0
+                                normalized = (assigned / capacity * 100) if (capacity is not None and capacity > 0) else 0
                                 dept_data.append({'Department': dept_id, 'Assigned': assigned, 'Capacity': capacity, 'Usage %': normalized})
                             
                             dept_norm_df = pd.DataFrame(dept_data)
