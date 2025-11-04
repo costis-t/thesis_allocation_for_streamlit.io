@@ -8,18 +8,20 @@ import plotly.graph_objects as go
 from pathlib import Path
 import sys
 
-# Add parent and project root to path for imports
+# Add project root to path for imports
 try:
     current_dir = Path(__file__).parent
-    parent_dir = current_dir.parent  # streamlit_dashboard_pages/
-    project_root = parent_dir.parent  # project root
+    project_root = current_dir.parent  # project root
     sys.path.insert(0, str(project_root))
-    sys.path.insert(0, str(parent_dir))
 except NameError:
     # Fallback for testing
     project_root = Path.cwd()
     sys.path.insert(0, str(project_root))
-    sys.path.insert(0, str(project_root / "streamlit_dashboard_pages"))
+
+from streamlit_dashboard_pages.shared import initialize_session_state
+
+# Initialize session state
+initialize_session_state()
 
 
 # Helper functions for charts
