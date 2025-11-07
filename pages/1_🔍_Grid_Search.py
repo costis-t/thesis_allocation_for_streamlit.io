@@ -103,7 +103,7 @@ with col2:
     
     granularity = st.selectbox(
         "Search Granularity:",
-        options=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        options=[1, 2],
         index=0,
         help="Higher = more combinations (slower but more thorough)"
     )
